@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.asiman.cryptotracker.ui.coin.CoinViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txt_name"
+            style="@style/TitleTextStyle"
+            android:layout_margin="@dimen/padding_large"
+            android:layout_marginStart="@dimen/padding_micro"
+            android:text="@{viewmodel.coin.name}"
+            app:layout_constraintBottom_toBottomOf="@id/img_icon"
+            app:layout_constraintStart_toEndOf="@id/img_icon"
+            app:layout_constraintTop_toTopOf="@id/img_icon"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/txt_symbol"
+            style="@style/TertiaryTextStyle"
+            android:layout_margin="@dimen/padding_large"
+            android:layout_marginEnd="@dimen/padding_micro"
+            android:text="@{viewmodel.coin.symbol}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="BTC" />
+
+        <TextView
+            android:id="@+id/txt_percent"
+            style="@style/PercentViewTextStyle"
+            android:layout_margin="@dimen/padding_large"
+            android:paddingVertical="@dimen/padding_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_symbol"
+            app:percent="@{viewmodel.coinPrice.price.usd.dailyChange}"
+            tools:text="12.11%" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_icon"
+            android:layout_width="@dimen/icon_normal"
+            android:layout_height="@dimen/icon_normal"
+            android:layout_margin="@dimen/padding_large"
+            app:imageUrl="@{viewmodel.coin.imageUrl}"
+            app:layout_constraintBottom_toTopOf="@id/txt_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_price"
+            style="@style/SecondaryTextStyle"
+            android:layout_margin="@dimen/padding_large"
+            app:amount="@{viewmodel.coinPrice.price.usd.value}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_icon"
+            tools:text="$12345" />
+
+        <com.asiman.cryptotracker.uikit.view.AmountView
+            android:id="@+id/amount_min"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_huge"
+            app:decimalValue="@={viewmodel.minLimit}"
+            app:hint="min"
+            app:layout_constraintEnd_toStartOf="@id/amount_max"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_percent" />
+
+        <com.asiman.cryptotracker.uikit.view.AmountView
+            android:id="@+id/amount_max"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_huge"
+            app:decimalValue="@={viewmodel.maxLimit}"
+            app:hint="max"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/amount_min"
+            app:layout_constraintTop_toBottomOf="@id/txt_percent" />
+
+        <TextView
+            android:id="@+id/txt_history_title"
+            style="@style/SecondaryTextStyle"
+            android:layout_marginHorizontal="@dimen/padding_large"
+            android:layout_marginVertical="@dimen/padding_huge"
+            android:text="@string/label_history"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/amount_max" />
+
+        <com.asiman.cryptotracker.uikit.view.CustomRecyclerView
+            android:id="@+id/rv_coins"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/padding_large"
+            app:emptyText="@string/label_empty_history"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/btn_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_history_title"
+            app:shimmerLayout="@layout/item_history_shimmer"
+            tools:listitem="@layout/item_history" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_save"
+            style="@style/PrimaryButton"
+            android:onClick="@{() -> viewmodel.saveClick()}"
+            android:text="@string/btn_save_changes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.asiman.cryptotracker.ui.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.base.MainActivity">
+
+        <TextView
+            android:id="@+id/txt_title"
+            style="@style/SecondaryTextStyle"
+            android:layout_margin="@dimen/padding_large"
+            android:text="Hello, 👋"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_description"
+            style="@style/TitleTextStyle"
+            android:layout_margin="@dimen/padding_large"
+            android:text="Good Morning, spread positivity to everyone"
+            app:layout_constraintBottom_toTopOf="@id/rv_coins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_title" />
+
+        <com.asiman.cryptotracker.uikit.view.CustomRecyclerView
+            android:id="@+id/rv_coins"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_description"
+            app:shimmerLayout="@layout/item_coin_shimmer"
+            tools:listitem="@layout/item_coin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CardViewStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_small"
+    android:clipToPadding="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:padding="@dimen/padding_large"
+        tools:context=".ui.base.MainActivity">
+
+        <View
+            android:id="@+id/txt_name"
+            style="@style/ShimmerTextStyle"
+            android:layout_height="@dimen/shimmer_text_height_large"
+            android:layout_marginStart="@dimen/padding_normal"
+            app:layout_constraintBottom_toBottomOf="@id/img_icon"
+            app:layout_constraintStart_toEndOf="@id/img_icon"
+            app:layout_constraintTop_toTopOf="@id/img_icon" />
+
+        <View
+            android:id="@+id/txt_symbol"
+            style="@style/ShimmerTextStyle"
+            android:layout_width="@dimen/shimmer_text_width_micro"
+            android:layout_height="@dimen/shimmer_text_height_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/txt_percent"
+            style="@style/ShimmerTextStyle"
+            android:layout_width="@dimen/percent_view_width"
+            android:layout_height="@dimen/percent_view_height"
+            android:paddingVertical="@dimen/padding_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:id="@+id/img_icon"
+            style="@style/ShimmerTextStyle"
+            android:layout_width="@dimen/icon_normal"
+            android:layout_height="@dimen/icon_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/txt_price"
+            style="@style/ShimmerTextStyle"
+            android:layout_width="@dimen/shimmer_text_width_small"
+            android:layout_height="@dimen/shimmer_text_height_large"
+            android:layout_marginBottom="@dimen/padding_small"
+            app:data="@{item.price.usd.value}"
+            app:layout_constraintBottom_toTopOf="@id/txt_percent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
