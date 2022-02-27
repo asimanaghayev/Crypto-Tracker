@@ -30,6 +30,10 @@ open class BaseViewModel @Inject constructor(application: Application) :
     val commonEffect: LiveData<BaseEffect>
         get() = _commonEffect
 
+    private val _message = MutableLiveData<String>()
+    val message: LiveData<String>
+        get() = _message
+
     fun navigate(directions: NavDirections, extras: Navigator.Extras? = null) {
         navigationCommands.postValue(NavigationCommand.To(directions, extras))
     }
@@ -50,6 +54,10 @@ open class BaseViewModel @Inject constructor(application: Application) :
             is NetworkError -> _commonEffect.postValue(NoInternet())
             else -> _commonEffect.postValue(UnknownError(cause = t))
         }
+    }
+
+    protected fun handleMessage(text: String) {
+        _message.postValue(text)
     }
 
     fun getString(@StringRes resId: Int): String {

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.asiman.cryptotracker.R
 import com.asiman.cryptotracker.support.tools.NavigationCommand
+import com.asiman.cryptotracker.support.util.toast
 import com.asiman.cryptotracker.uikit.dialog.LoadingDialog
 import java.lang.UnknownError
 
@@ -30,6 +31,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
         bindNavController()
         bindCommonEffects()
+        bindMessage()
         bindLoading()
     }
 
@@ -63,6 +65,12 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
                 is MessageError -> showError(it.messageId, it.titleId, it.imageId)
                 else -> error("Unknown BaseEffect: $it")
             }
+        }
+    }
+
+    private fun bindMessage() {
+        viewModel.message.observe(viewLifecycleOwner) {
+            context?.toast(it)
         }
     }
 

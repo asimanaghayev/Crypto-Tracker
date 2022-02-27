@@ -36,7 +36,7 @@ class HomeViewModel @Inject constructor(
     }
 
     init {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             coinsRepository.syncCoins()
         }
     }

@@ -79,6 +79,7 @@ class CoinViewModel @Inject constructor(
 
             if (coin.minLimit > BigDecimal.ZERO || coin.maxLimit > BigDecimal.ZERO) {
                 initWorker()
+                handleMessage("You will be notified if price exceeds limits.")
             }
         }
         navigate(NavigationCommand.Back)
