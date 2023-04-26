@@ -5,4 +5,4 @@ data class PriceResponse(
     val bitcoin: CurrencyPOJO?,
     val ethereum: CurrencyPOJO?,
     val ripple: CurrencyPOJO?,
-)
+) : BaseResponse()

@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.base.MainActivity">
+        tools:context=".ui.base.NavigationActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_coins"

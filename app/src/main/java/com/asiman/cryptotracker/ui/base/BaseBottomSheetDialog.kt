@@ -27,7 +27,6 @@ open class BaseBottomSheetDialog : BottomSheetDialogFragment() {
     private var imageBg: Int = R.color.white
     private var buttonTextColor: Int = R.color.mirage500
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

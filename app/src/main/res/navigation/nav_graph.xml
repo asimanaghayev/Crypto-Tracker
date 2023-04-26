@@ -11,10 +11,9 @@
         android:label="Home Fragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_to_coin"
+            android:id="@+id/to_coin"
             app:destination="@+id/fragment_coin" />
     </fragment>
-
 
     <fragment
         android:id="@+id/fragment_coin"
@@ -23,6 +22,6 @@
         tools:layout="@layout/fragment_coin">
         <argument
             android:name="coin"
-            app:argType="com.asiman.cryptotracker.data.db.model.Coin" />
+            app:argType="com.asiman.cryptotracker.data.db.entity.Coin" />
     </fragment>
 </navigation>

@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CryptoTracker">
         <activity
-            android:name=".ui.base.MainActivity"
+            android:name=".ui.base.NavigationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

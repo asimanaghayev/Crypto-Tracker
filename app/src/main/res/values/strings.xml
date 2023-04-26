@@ -26,4 +26,8 @@
     <string name="error_unknown_title">Something went wrong</string>
     <string name="error_unknown_text">Sorry, unexpected error has happened. Please try again later</string>
 
+    <string name="network.error.no_internet">No internet connection</string>
+    <string name="network.error.poor_network">No internet connection</string>
+    <string name="network.error.unknown">Something went wrong…</string>
+
 </resources>

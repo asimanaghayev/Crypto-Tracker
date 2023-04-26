@@ -111,10 +111,10 @@
 
         <item name="minHeight">@dimen/text_input_height</item>
 
-        <item name="boxCornerRadiusTopStart">@dimen/border_radius_huge</item>
-        <item name="boxCornerRadiusTopEnd">@dimen/border_radius_huge</item>
-        <item name="boxCornerRadiusBottomEnd">@dimen/border_radius_huge</item>
-        <item name="boxCornerRadiusBottomStart">@dimen/border_radius_huge</item>
+        <item name="boxCornerRadiusTopStart">@dimen/radius.huge</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius.huge</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius.huge</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius.huge</item>
     </style>
 
     <!--  Shimmer Style  -->

@@ -2,10 +2,10 @@ package com.asiman.cryptotracker.data.converters
 
 import com.asiman.cryptotracker.data.annotations.CoinType
 import com.asiman.cryptotracker.data.annotations.Currency
-import com.asiman.cryptotracker.data.db.model.Amount
-import com.asiman.cryptotracker.data.db.model.Coin
+import com.asiman.cryptotracker.data.db.entity.Amount
+import com.asiman.cryptotracker.data.db.entity.Coin
 import com.asiman.cryptotracker.data.db.model.CoinPrice
-import com.asiman.cryptotracker.data.db.model.Price
+import com.asiman.cryptotracker.data.db.entity.Price
 import com.asiman.cryptotracker.data.network.model.CoinResponse
 import com.asiman.cryptotracker.data.network.model.CurrencyPOJO
 import com.asiman.cryptotracker.data.network.model.PriceResponse

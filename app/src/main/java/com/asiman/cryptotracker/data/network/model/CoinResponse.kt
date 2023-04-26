@@ -6,4 +6,4 @@ data class CoinResponse(
     val name: String,
     val description: LocalesPOJO,
     val image: ImagesPOJO,
-)
+): BaseResponse()

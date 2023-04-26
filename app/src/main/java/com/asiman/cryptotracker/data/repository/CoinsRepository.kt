@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.asiman.cryptotracker.data.annotations.CoinType
 import com.asiman.cryptotracker.data.converters.toCoin
 import com.asiman.cryptotracker.data.db.AppDatabase
-import com.asiman.cryptotracker.data.db.model.Coin
+import com.asiman.cryptotracker.data.db.entity.Coin
 import com.asiman.cryptotracker.data.network.ApiInitHelper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 class CoinsRepository @Inject constructor(
     database: AppDatabase,
-) {
+) : BaseRepository() {
     private val service = ApiInitHelper.coinsService
     private val coinDao = database.coinDao
 
@@ -32,9 +32,9 @@ class CoinsRepository @Inject constructor(
     suspend fun syncCoins() {
         localCoins.collect {
             _allCoins.postValue(it as MutableList<Coin>?)
-            if (it.isNullOrEmpty()) {
+            if (it.isEmpty()) {
                 for (coin in CoinType.ALL) {
-                    val response = service.getCoinData(coin)
+                    val response = handleRequest { service.getCoinData(coin) }
                     coinDao.insert(response.toCoin())
                     allCoins.value?.plus(response.toCoin())?.let { updatedCoins ->
                         _allCoins.postValue(updatedCoins)

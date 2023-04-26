@@ -6,13 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.work.*
 import com.asiman.cryptotracker.base.Constants.Companion.LIVE_REFRESH_TIME
-import com.asiman.cryptotracker.data.db.model.Coin
+import com.asiman.cryptotracker.data.db.entity.Coin
 import com.asiman.cryptotracker.data.db.model.CoinPrice
 import com.asiman.cryptotracker.data.repository.CoinsRepository
 import com.asiman.cryptotracker.data.repository.SimpleRepository
 import com.asiman.cryptotracker.support.tools.NavigationCommand
 import com.asiman.cryptotracker.ui.base.BaseViewModel
-import com.asiman.cryptotracker.work.PricesSyncWorker
+import com.asiman.cryptotracker.worker.PricesSyncWorker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -27,7 +27,7 @@ class CoinViewModel @Inject constructor(
     application: Application,
     private val repository: SimpleRepository,
     private val coinRepository: CoinsRepository,
-) : BaseViewModel(application) {
+) : BaseViewModel(application, repository, coinRepository) {
     companion object {
         const val WORK_NAME = "PRICES_SYNC_WORK"
     }
@@ -79,7 +79,7 @@ class CoinViewModel @Inject constructor(
 
             if (coin.minLimit > BigDecimal.ZERO || coin.maxLimit > BigDecimal.ZERO) {
                 initWorker()
-                handleMessage("You will be notified if price exceeds limits.")
+                handleInfo("You will be notified if price exceeds limits.")
             }
         }
         navigate(NavigationCommand.Back)

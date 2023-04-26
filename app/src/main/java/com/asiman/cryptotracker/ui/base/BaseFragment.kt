@@ -1,39 +1,65 @@
 package com.asiman.cryptotracker.ui.base
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.viewbinding.ViewBinding
 import com.asiman.cryptotracker.R
 import com.asiman.cryptotracker.support.tools.NavigationCommand
-import com.asiman.cryptotracker.support.util.toast
 import com.asiman.cryptotracker.uikit.dialog.LoadingDialog
-import java.lang.UnknownError
+import com.asiman.cryptotracker.uikit.view.showSnackbar
 
-abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
+abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
+    private val vb: Inflate<VB>,
+    private val vm: Class<VM>,
+) : Fragment() {
 
-    protected abstract val viewModel: VM
+    protected var _binding: VB? = null
+    val binding get() = _binding!!
+    protected lateinit var viewModel: VM
 
     protected open val loadingDialog: DialogFragment? by lazy { LoadingDialog.build() }
 
-    protected open val noInternetDialog: DialogFragment? by lazy {
-        BaseBottomSheetDialog.build(
-            title = R.string.error_no_internet_title,
-            text = R.string.error_no_internet_text,
-            image = R.drawable.ic_alert_no_internet,
-            action = { it.dismiss() }
-        )
+    private var isObserving = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel = ViewModelProvider(this)[vm]
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        if (_binding == null)
+            _binding = vb.invoke(inflater, container, false)
 
+        bindUi()
+        if (!isObserving) {
+            isObserving = true
+            observeBaseData()
+        }
+
+        return binding.root
+    }
+
+    private fun observeBaseData() {
         bindNavController()
-        bindCommonEffects()
-        bindMessage()
+        bindInfo()
+        bindError()
         bindLoading()
+        bindObservers()
     }
+
+    abstract fun bindUi()
+    abstract fun bindObservers()
 
     private fun bindNavController() {
         viewModel.navigationCommands.observe(viewLifecycleOwner) { command ->
@@ -41,8 +67,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
                 is NavigationCommand.To -> {
                     command.extras?.let { extras ->
                         findNavController().navigate(
-                            command.directions,
-                            extras
+                            command.directions, extras
                         )
                     } ?: run {
                         findNavController().navigate(
@@ -56,27 +81,16 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
         }
     }
 
-    private fun bindCommonEffects() {
-        viewModel.commonEffect.observe(viewLifecycleOwner) {
-            when (it) {
-                is NoInternet -> showNoInternet()
-                is BackEndError -> showBackEndError()
-                is UnknownError -> showBackEndError()
-                is MessageError -> showError(it.messageId, it.titleId, it.imageId)
-                else -> error("Unknown BaseEffect: $it")
-            }
+    private fun bindInfo() {
+        viewModel.info.observe(viewLifecycleOwner) {
+            binding.root.showSnackbar(it)
         }
     }
 
-    private fun bindMessage() {
-        viewModel.message.observe(viewLifecycleOwner) {
-            context?.toast(it)
+    private fun bindError() {
+        viewModel.error.observe(viewLifecycleOwner) {
+            binding.root.showSnackbar(it, R.drawable.bg_error)
         }
-    }
-
-    protected open fun showNoInternet() {
-        if (noInternetDialog?.isAdded == false)
-            noInternetDialog?.show("internet-error-dialog")
     }
 
     protected open fun showBackEndError() {
@@ -90,14 +104,12 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
         title: Int? = R.string.error_unknown_title,
         image: Int? = R.drawable.ic_error,
     ) {
-        BaseBottomSheetDialog.build(
-            text = message,
+        BaseBottomSheetDialog.build(text = message,
             title = title ?: R.string.error_unknown_title,
             image = image ?: R.drawable.ic_error,
             action = {
                 it.dismiss()
-            }
-        ).show("show-error-dialog")
+            }).show("show-error-dialog")
     }
 
     private fun bindLoading() {

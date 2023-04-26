@@ -1,1 +1,14 @@
 /build
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/.idea/sonarlint
+/.idea/checkstyle-idea.xml
+.idea/misc.xml
+.idea/codeStyles
+.idea/gradle.xml
+.idea/deploymentTargetDropDown.xml
+.idea/dictionaries
