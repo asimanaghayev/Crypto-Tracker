@@ -13,8 +13,6 @@ import kotlin.random.Random
 
 fun Context.sendNotification(title: String, description: String) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
         val importance = NotificationManager.IMPORTANCE_HIGH
         val channel = NotificationChannel(CHANNEL_ID, "CHANNEL_NAME", importance)
         channel.description = description

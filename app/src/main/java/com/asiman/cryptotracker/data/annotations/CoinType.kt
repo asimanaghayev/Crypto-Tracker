@@ -6,7 +6,7 @@ import com.asiman.cryptotracker.data.annotations.CoinType.Companion.ETHEREUM
 import com.asiman.cryptotracker.data.annotations.CoinType.Companion.RIPPLE
 
 @StringDef(BITCOIN, ETHEREUM, RIPPLE)
-@kotlin.annotation.Retention(AnnotationRetention.SOURCE)
+@Retention(AnnotationRetention.SOURCE)
 annotation class CoinType {
     companion object {
         const val BITCOIN = "bitcoin"

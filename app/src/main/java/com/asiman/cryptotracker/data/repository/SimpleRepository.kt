@@ -5,16 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import com.asiman.cryptotracker.data.converters.toCoinPriceList
 import com.asiman.cryptotracker.data.converters.toIdQueryString
 import com.asiman.cryptotracker.data.db.AppDatabase
-import com.asiman.cryptotracker.data.db.model.Coin
+import com.asiman.cryptotracker.data.db.entity.Coin
+import com.asiman.cryptotracker.data.db.entity.Price
 import com.asiman.cryptotracker.data.db.model.CoinPrice
-import com.asiman.cryptotracker.data.db.model.Price
 import com.asiman.cryptotracker.data.network.ApiInitHelper
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class SimpleRepository @Inject constructor(
     database: AppDatabase,
-) {
+) : BaseRepository() {
     private val service = ApiInitHelper.simpleService
 
     private val _remoteCoinsPrice = MutableLiveData<List<CoinPrice>>()
@@ -23,16 +23,17 @@ class SimpleRepository @Inject constructor(
     private val pricesDao = database.pricesDao
 
     suspend fun fetchPrices(coins: List<Coin>) {
-        val response = service.getPrice(ids = coins.toIdQueryString())
+        val response = handleRequest { service.getPrice(ids = coins.toIdQueryString()) }
         _remoteCoinsPrice.postValue(response.toCoinPriceList(coins))
     }
 
     suspend fun getPrices(coins: List<Coin>): List<CoinPrice> {
-        return service.getPrice(ids = coins.toIdQueryString()).toCoinPriceList(coins)
+        return handleRequest { service.getPrice(ids = coins.toIdQueryString()) }
+            .toCoinPriceList(coins)
     }
 
     suspend fun getPrice(coin: Coin): CoinPrice {
-        val response = service.getPrice(ids = listOf(coin).toIdQueryString())
+        val response = handleRequest { service.getPrice(ids = listOf(coin).toIdQueryString()) }
         return response.toCoinPriceList(listOf(coin))[0]
     }
 

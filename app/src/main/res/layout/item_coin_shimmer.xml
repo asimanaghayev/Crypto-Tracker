@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:padding="@dimen/padding_large"
-        tools:context=".ui.base.MainActivity">
+        tools:context=".ui.base.NavigationActivity">
 
         <View
             android:id="@+id/txt_name"

@@ -1,12 +1,11 @@
 package com.asiman.cryptotracker.data.annotations
 
 import androidx.annotation.StringDef
-import com.asiman.cryptotracker.data.annotations.CoinType.Companion.BITCOIN
-import com.asiman.cryptotracker.data.annotations.CoinType.Companion.ETHEREUM
-import com.asiman.cryptotracker.data.annotations.CoinType.Companion.RIPPLE
+import com.asiman.cryptotracker.data.annotations.Currency.Companion.EUR
+import com.asiman.cryptotracker.data.annotations.Currency.Companion.USD
 
-@StringDef(BITCOIN, ETHEREUM, RIPPLE)
-@kotlin.annotation.Retention(AnnotationRetention.SOURCE)
+@StringDef(USD, EUR)
+@Retention(AnnotationRetention.SOURCE)
 annotation class Currency {
     companion object {
         const val USD = "usd"

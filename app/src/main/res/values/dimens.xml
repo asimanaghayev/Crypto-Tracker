@@ -59,17 +59,17 @@
     <dimen name="elevation_default">@dimen/elevation_large</dimen>
 
     <!-- Border Radius -->
-    <dimen name="border_radius_micro">1dp</dimen>
-    <dimen name="border_radius_small">3dp</dimen>
-    <dimen name="border_radius_medium">5dp</dimen>
-    <dimen name="border_radius_large">7dp</dimen>
-    <dimen name="border_radius_huge">9dp</dimen>
-    <dimen name="border_radius_enormous">11dp</dimen>
-    <dimen name="border_radius_20">20dp</dimen>
+    <dimen name="radius.micro">1dp</dimen>
+    <dimen name="radius.small">3dp</dimen>
+    <dimen name="radius.medium">5dp</dimen>
+    <dimen name="radius.large">7dp</dimen>
+    <dimen name="radius.huge">9dp</dimen>
+    <dimen name="radius.enormous">11dp</dimen>
+    <dimen name="radius.20">20dp</dimen>
 
     <dimen name="border_radius_card">10dp</dimen>
 
-    <!-- Border Radius -->
+    <!-- Border Width -->
     <dimen name="border_size_default">@dimen/border_size_micro</dimen>
     <dimen name="border_size_micro">1dp</dimen>
     <dimen name="border_size_small">2dp</dimen>

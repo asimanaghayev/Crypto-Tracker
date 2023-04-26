@@ -5,14 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.asiman.cryptotracker.BuildConfig
 import com.asiman.cryptotracker.base.Constants
 import com.asiman.cryptotracker.data.db.converters.Converters
 import com.asiman.cryptotracker.data.db.dao.CoinDao
 import com.asiman.cryptotracker.data.db.dao.PriceDao
-import com.asiman.cryptotracker.data.db.model.Amount
-import com.asiman.cryptotracker.data.db.model.Coin
-import com.asiman.cryptotracker.data.db.model.Price
+import com.asiman.cryptotracker.data.db.entity.Amount
+import com.asiman.cryptotracker.data.db.entity.Coin
+import com.asiman.cryptotracker.data.db.entity.Price
 
 
 @Database(version = 1 , entities = [Coin::class, Amount::class, Price::class])

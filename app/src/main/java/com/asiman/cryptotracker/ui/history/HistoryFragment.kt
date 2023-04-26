@@ -21,7 +21,7 @@ class HistoryFragment : Fragment() {
 
     private val adapter: CoinsAdapter = CoinsAdapter(object : ItemClickListener<CoinPrice> {
         override fun onItemClick(item: CoinPrice) {
-//            findNavController().navigate(HomeFragmentDirections.actionToCoin(item.coin))
+//            findNavController().navigate(HomeFragmentDirections.toCoin(item.coin))
         }
     })
 

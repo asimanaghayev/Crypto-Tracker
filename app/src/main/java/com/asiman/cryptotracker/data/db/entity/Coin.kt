@@ -1,4 +1,4 @@
-package com.asiman.cryptotracker.data.db.model
+package com.asiman.cryptotracker.data.db.entity
 
 import android.os.Parcelable
 import androidx.room.Entity

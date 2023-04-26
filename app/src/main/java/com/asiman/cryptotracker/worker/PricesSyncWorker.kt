@@ -1,4 +1,4 @@
-package com.asiman.cryptotracker.work
+package com.asiman.cryptotracker.worker
 
 import android.content.Context
 import androidx.work.CoroutineWorker

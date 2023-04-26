@@ -23,6 +23,12 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="blueRibbon800">#016FE8</color>
 
+    <!--  Yellow shades  -->
+    <color name="yellow.FFD93A">#FFD93A</color>
+
+    <!--  Red shades  -->
+    <color name="red.ED6D7E">#ED6D7E</color>
+
     <!-- RIPPLE -->
     <eat-comment />
     <color name="ripple_color">@color/black_10</color>

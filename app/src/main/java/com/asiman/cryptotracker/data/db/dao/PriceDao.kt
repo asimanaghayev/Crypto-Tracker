@@ -2,8 +2,8 @@ package com.asiman.cryptotracker.data.db.dao
 
 import androidx.room.*
 import com.asiman.cryptotracker.data.converters.toPriceList
-import com.asiman.cryptotracker.data.db.model.Coin
-import com.asiman.cryptotracker.data.db.model.Price
+import com.asiman.cryptotracker.data.db.entity.Coin
+import com.asiman.cryptotracker.data.db.entity.Price
 import com.asiman.cryptotracker.data.network.model.PriceResponse
 import kotlinx.coroutines.flow.Flow
 
