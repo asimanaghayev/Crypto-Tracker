@@ -8,11 +8,15 @@ digraph {
   ":app" [fillcolor="#baffc9"];
   ":module_network" [fillcolor="#baffc9"];
   ":module_storage" [fillcolor="#baffc9"];
+  ":module_ui_kit" [fillcolor="#baffc9"];
+  ":module_utility" [fillcolor="#baffc9"];
 
   {rank = same;}
 
   # Dependencies
 
   ":app" -> ":module_network"
+  ":app" -> ":module_ui_kit"
   ":module_network" -> ":module_storage"
+  ":module_ui_kit" -> ":module_utility"
 }
