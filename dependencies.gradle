@@ -1,0 +1,169 @@
+ext {
+
+    strings = [
+            STRING             : "String",
+            INT                : "int",
+            SERVER_URL         : "SERVER_URL",
+            CACHE_PATH         : "CACHE_PATH",
+            DATABASE_NAME      : "DATABASE_NAME",
+
+            APP_NAME           : "APP_NAME",
+            APP_ICON           : "APP_ICON",
+            APPLICATION_ID     : "APPLICATION_ID",
+            FIREBASE_CLIENT_ID : "FIREBASE_CLIENT_ID",
+
+            SUFFIX_DEV         : "DEV_",
+
+            VERSION_CODE       : "VERSION_CODE",
+            VERSION_NAME       : "VERSION_NAME",
+            VERSION_NAME_STRING: "VERSION_NAME_STRING",
+
+            KEYSTORE_PATH      : "KEYSTORE_PATH",
+            KEY_ALIAS          : "KEY_ALIAS",
+    ]
+
+    buildVersions = [
+            buildToolsVersion    : "30.0.3",
+            minSdkVersion        : 26,
+            targetSdkVersion     : 32,
+            compileSdkVersion    : 33,
+            renderscriptTargetApi: 19
+    ]
+
+    jdk = [
+            kotlinVersion: "11"
+    ]
+
+    coroutines = "1.5.2"
+    lifecycle = "2.4.0"
+    navigation = "2.4.1"
+    hiltVersion = '2.40.1'
+    googleServices = "4.3.10"
+    timber = "4.7.1"
+    gson = "2.8.6"
+    kotlinVersion = '1.6.21'
+    kpermissions = "3.2.1"
+    shadowCV = "1.0.5"
+    mlkitVersion = "17.0.3"
+    gradleVersion = '7.3.1'
+    archNavigation = "1.0.0"
+    retrofit = "2.9.0"
+    moshiVersion = "1.13.0"
+    retrofitAdapterVersion = '0.9.2'
+    workVersion = '2.7.1'
+    roomVersion = '2.4.0'
+
+    okHttp = "4.8.1"
+    firebaseBomVersion = "29.3.1"
+    glideVersion = "4.12.0"
+    ultimateBar = "0.7.1"
+    multidexVersion = "2.0.1"
+
+    global = [
+            gradleTools   : "com.android.tools.build:gradle:$gradleVersion",
+            hilt          : "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion",
+            safeArgs      : "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation",
+            safeArgsArch  : "android.arch.navigation:navigation-safe-args-gradle-plugin:$archNavigation",
+            kotlin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+            googleServices: "com.google.gms:google-services:$googleServices",
+            crashlytics   : "com.google.firebase:firebase-crashlytics-gradle:2.8.1",
+            kotlinSTDLib  : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    ]
+
+    core = [
+            core        : "androidx.core:core-ktx:1.7.0",
+            appCompat   : "androidx.appcompat:appcompat:1.6.1",
+            recyclerView: "androidx.recyclerview:recyclerview:1.2.1",
+            material    : "com.google.android.material:material:1.8.0",
+            constraint  : "androidx.constraintlayout:constraintlayout:2.1.3",
+            timber      : "com.jakewharton.timber:timber:$timber",
+            multidex    : "androidx.multidex:multidex:$multidexVersion"
+    ]
+
+    test = [
+            espressoCore : "androidx.test.espresso:espresso-core:3.4.0",
+            androidxJunit: "androidx.test.ext:junit:1.1.3",
+            rules        : "androidx.test:rules:1.4.0",
+            truth        : "androidx.test.ext:truth:1.4.0",
+            mockito      : "org.mockito.kotlin:mockito-kotlin:3.2.0",
+            coreTesting  : "androidx.arch.core:core-testing:2.1.0",
+            junit        : "junit:junit:4.13.2",
+    ]
+
+    work = [
+            workManager: "androidx.work:work-runtime-ktx:$workVersion"
+    ]
+
+    google = [
+            gson: "com.google.code.gson:gson:$gson"
+    ]
+
+    retrofit = [
+            core     : "com.squareup.retrofit2:retrofit:$retrofit",
+            converter: "com.squareup.retrofit2:converter-moshi:$retrofit",
+            scalars  : "com.squareup.retrofit2:converter-scalars:$retrofit",
+            adapter  : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofitAdapterVersion"
+    ]
+
+    moshi = [
+            core         : "com.squareup.moshi:moshi:$moshiVersion",
+            kotlinVersion: "com.squareup.moshi:moshi-kotlin:$moshiVersion",
+            kotlin       : "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion",
+    ]
+
+    okHttp = [
+            core   : "com.squareup.okhttp3:okhttp:$okHttp",
+            logging: "com.squareup.okhttp3:logging-interceptor:$okHttp"
+    ]
+
+    mlkit = [
+            core: "com.google.mlkit:barcode-scanning:$mlkitVersion"
+    ]
+
+    lifeCycle = [
+            viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle",
+            livedata : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
+    ]
+
+    coroutines = [
+            core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
+            android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+    ]
+
+    navigation = [
+            ui      : "androidx.navigation:navigation-ui-ktx:$navigation",
+            fragment: "androidx.navigation:navigation-fragment-ktx:$navigation"
+    ]
+
+    di = [
+            android       : "com.google.dagger:hilt-android:$hiltVersion",
+            daggerCompiler: "com.google.dagger:hilt-android-compiler:$hiltVersion",
+    ]
+
+    kpermissions = [
+            core       : "com.github.fondesa:kpermissions:$kpermissions",
+            corooutines: "com.github.fondesa:kpermissions-coroutines:$kpermissions"
+    ]
+
+    glide = [
+            core    : "com.github.bumptech.glide:glide:$glideVersion",
+            compiler: "com.github.bumptech.glide:compiler:$glideVersion",
+            okhttp3 : "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
+    ]
+
+    room = [
+            runtime : "androidx.room:room-runtime:$roomVersion",
+            compiler: "androidx.room:room-compiler:$roomVersion",
+            ktx     : "androidx.room:room-ktx:$roomVersion",
+    ]
+}
+
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.mavenCentral()
+    handler.jcenter()
+    handler.maven { url "https://jitpack.io" }
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+ext.addRepos = this.&addRepos
