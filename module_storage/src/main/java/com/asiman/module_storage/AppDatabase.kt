@@ -21,6 +21,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract val coinDao: CoinDao
 
     companion object {
+//        val ALL_MIGRATIONS = arrayOf()
 
         @Volatile
         private lateinit var INSTANCE: AppDatabase
@@ -34,15 +35,10 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     DbConstants.DATABASE_NAME
                 )
-                    .fallbackToDestructiveMigration()
+//                    .addMigrations(*ALL_MIGRATIONS)
                     .build()
             }
             return INSTANCE
         }
-
-        fun getCoinDao(context: Context) = getDatabase(context).coinDao
-
-        fun getPriceDao(context: Context) = getDatabase(context).priceDao
-
     }
 }

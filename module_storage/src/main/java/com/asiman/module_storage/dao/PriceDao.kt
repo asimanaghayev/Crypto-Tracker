@@ -6,25 +6,25 @@ import com.asiman.module_storage.entity.Price
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-abstract class PriceDao {
+interface PriceDao {
 
     @Query("SELECT * FROM Price WHERE coinId = :coinId")
-    abstract fun getPricesForCoin(coinId: String): Flow<List<Price>>
+    fun getPricesForCoin(coinId: String): Flow<List<Price>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insert(price: Price)
+    fun insert(price: Price)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertAll(prices: List<Price>)
+    fun insertAll(prices: List<Price>)
 
     @Update
-    abstract fun update(price: Price)
+    fun update(price: Price)
 
     @Query("delete FROM Price WHERE coinId = :coinId")
-    abstract fun delete(coinId: String)
+    fun delete(coinId: String)
 
     @Query("delete FROM Price")
-    abstract fun deleteAll()
+    fun deleteAll()
 
     @Transaction
     open suspend fun replaceAll(items: List<Price>) {
@@ -33,7 +33,7 @@ abstract class PriceDao {
     }
 
 //    @Transaction
-//    open suspend abstract fun insert(coins: List<Coin>, response: PriceResponse) {
+//    open suspend fun insert(coins: List<Coin>, response: PriceResponse) {
 //        insertAll(response.toPriceList(coins))
 //    }
 
