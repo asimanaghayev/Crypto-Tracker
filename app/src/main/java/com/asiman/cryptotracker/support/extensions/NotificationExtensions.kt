@@ -8,7 +8,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.asiman.cryptotracker.R
 import com.asiman.cryptotracker.base.Constants
-import com.asiman.cryptotracker.base.Constants.Companion.CHANNEL_ID
+import com.asiman.cryptotracker.base.Constants.CHANNEL_ID
 import kotlin.random.Random
 
 fun Context.sendNotification(title: String, description: String) {

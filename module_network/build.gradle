@@ -1,0 +1,72 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+def properties = new Properties()
+file("../build.properties").withInputStream {
+    stream -> properties.load(stream)
+}
+
+android {
+    namespace 'com.asiman.module_network'
+
+    defaultConfig {
+        compileSdkVersion buildVersions.compileSdkVersion
+        buildToolsVersion buildVersions.buildToolsVersion
+        minSdkVersion buildVersions.minSdkVersion
+        targetSdkVersion buildVersions.targetSdkVersion
+
+        buildConfigField 'String', 'SERVER_URL', properties.getProperty("SERVER_URL")
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    hilt {
+        enableExperimentalClasspathAggregation = true
+        enableAggregatingTask = true
+    }
+}
+
+dependencies {
+    api project(":module_storage")
+
+    implementation core.core
+    implementation core.appCompat
+    implementation core.material
+    implementation core.timber
+    testImplementation test.junit
+    androidTestImplementation test.androidxJunit
+    androidTestImplementation test.espressoCore
+
+    implementation retrofit.core
+    implementation retrofit.converter
+    implementation retrofit.scalars
+    implementation retrofit.adapter
+
+    implementation okHttp.logging
+
+    implementation moshi.core
+    implementation moshi.kotlinVersion
+    kapt moshi.kotlin
+
+    implementation di.android
+    kapt di.daggerCompiler
+}

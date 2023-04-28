@@ -22,6 +22,6 @@
         tools:layout="@layout/fragment_coin">
         <argument
             android:name="coin"
-            app:argType="com.asiman.cryptotracker.data.db.entity.Coin" />
+            app:argType="com.asiman.module_storage.entity.Coin" />
     </fragment>
 </navigation>

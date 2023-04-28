@@ -8,12 +8,10 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigator
-import com.asiman.cryptotracker.data.network.model.BaseResponse
-import com.asiman.cryptotracker.data.network.model.ErrorStatus
-import com.asiman.cryptotracker.data.repository.BaseRepository
+import com.asiman.module_network.model.ErrorStatus
+import com.asiman.module_network.repository.BaseRepository
 import com.asiman.cryptotracker.support.tools.NavigationCommand
-import com.asiman.cryptotracker.support.tools.SingleLiveEvent
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.asiman.module_network.support.SingleLiveEvent
 
 open class BaseViewModel constructor(
     application: Application,
