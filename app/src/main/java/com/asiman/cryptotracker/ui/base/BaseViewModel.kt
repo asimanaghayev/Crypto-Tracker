@@ -9,7 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigator
 import com.asiman.module_network.model.ErrorStatus
-import com.asiman.module_network.repository.BaseRepository
+import com.asiman.module_network.repo.base.BaseRepository
 import com.asiman.cryptotracker.support.tools.NavigationCommand
 import com.asiman.module_network.support.SingleLiveEvent
 

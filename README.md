@@ -35,3 +35,8 @@ Android Support Libraries
 ### API
 
 [Coingecko](https://www.coingecko.com/en/api/documentation) is used for API
+
+
+### App Module Graph
+
+![](gradle/dependency-graph/project.dot.png)

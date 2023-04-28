@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.asiman.module_storage.annotations.CoinType
 import com.asiman.module_storage.entity.Coin
-import com.asiman.module_network.repository.CoinsRepository
-import com.asiman.module_network.repository.SimpleRepository
+import com.asiman.module_network.repo.coins.CoinsRepository
+import com.asiman.module_network.repo.simple.SimpleRepository
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
