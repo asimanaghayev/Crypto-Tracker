@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.asiman.cryptotracker.R
 import com.asiman.cryptotracker.databinding.FragmentHistoryBinding
-import com.asiman.cryptotracker.ui.base.adapter.ItemClickListener
+import com.example.module_ui_kit.view.recyclerview.ItemClickListener
 import com.asiman.cryptotracker.ui.home.CoinsAdapter
 import com.asiman.module_storage.relation.CoinWithPrice
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Loading -->
+    <string name="loading_dialog_title">Please wait</string>
+    <string name="loading_dialog_description">We’re loading details…</string>
+
+</resources>

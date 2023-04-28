@@ -2,3 +2,5 @@ rootProject.name = "Crypto Tracker"
 include ':app'
 include ':module_network'
 include ':module_storage'
+include ':module_ui_kit'
+include ':module_utility'

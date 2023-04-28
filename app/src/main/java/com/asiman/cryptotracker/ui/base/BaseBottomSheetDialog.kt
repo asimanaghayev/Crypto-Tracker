@@ -8,8 +8,8 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.asiman.cryptotracker.R
 import com.asiman.cryptotracker.databinding.FragmentBottomSheetDialogBaseBinding
-import com.asiman.cryptotracker.support.delegate.viewBinding
 import com.asiman.cryptotracker.support.util.StringUtils.updateBoldSpanWithBoldFont
+import com.example.module_ui_kit.support.delegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 open class BaseBottomSheetDialog : BottomSheetDialogFragment() {
@@ -24,8 +24,8 @@ open class BaseBottomSheetDialog : BottomSheetDialogFragment() {
     private var canCancel: Boolean = true
     private var buttonText: Int = R.string.btn_close
     private var action: (BaseBottomSheetDialog) -> Unit = {}
-    private var imageBg: Int = R.color.white
-    private var buttonTextColor: Int = R.color.mirage500
+    private var imageBg: Int = com.example.module_ui_kit.R.color.white
+    private var buttonTextColor: Int = com.example.module_ui_kit.R.color.gray_454A50
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +39,7 @@ open class BaseBottomSheetDialog : BottomSheetDialogFragment() {
         binding.title.setText(title)
         binding.text.text = updateBoldSpanWithBoldFont(
             getText(text),
-            ContextCompat.getColor(requireContext(), R.color.mirage500)
+            ContextCompat.getColor(requireContext(), com.example.module_ui_kit.R.color.gray_454A50)
         )
         binding.image.setBackgroundResource(imageBg)
         binding.image.setImageResource(image)
@@ -61,9 +61,9 @@ open class BaseBottomSheetDialog : BottomSheetDialogFragment() {
             scaleType: ImageView.ScaleType = ImageView.ScaleType.CENTER,
             cancelable: Boolean = true,
             buttonText: Int = R.string.btn_close,
-            buttonTextColor: Int = R.color.mirage500,
+            buttonTextColor: Int = com.example.module_ui_kit.R.color.gray_454A50,
             action: (BaseBottomSheetDialog) -> Unit = {},
-            imageBg: Int = R.color.white,
+            imageBg: Int = com.example.module_ui_kit.R.color.white,
         ): BaseBottomSheetDialog {
             return BaseBottomSheetDialog().apply {
                 this.title = title

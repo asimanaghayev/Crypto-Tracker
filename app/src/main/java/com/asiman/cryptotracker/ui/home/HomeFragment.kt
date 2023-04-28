@@ -3,7 +3,7 @@ package com.asiman.cryptotracker.ui.home
 import androidx.navigation.fragment.findNavController
 import com.asiman.cryptotracker.databinding.FragmentHomeBinding
 import com.asiman.cryptotracker.ui.base.BaseFragment
-import com.asiman.cryptotracker.ui.base.adapter.ItemClickListener
+import com.example.module_ui_kit.view.recyclerview.ItemClickListener
 import com.asiman.module_storage.relation.CoinWithPrice
 import dagger.hilt.android.AndroidEntryPoint
 

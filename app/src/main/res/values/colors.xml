@@ -1,67 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#517fa4</color>
-    <color name="colorPrimaryDark">#353B48</color>
-    <color name="colorPrimaryLight">#20046EDB</color>
+    <color name="colorPrimary">@color/blue.517fA4</color>
+    <color name="colorPrimaryDark">@color/blue.353B48</color>
+    <color name="colorPrimaryLight">@color/blue.046EDB.20</color>
 
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="teal_200">@color/green.03DAC5</color>
+    <color name="teal_700">@color/green.018786</color>
 
-    <color name="percent_green">#2EBD85</color>
-    <color name="percent_red">#F5465D</color>
-    <color name="percent_gray">#848E9C</color>
+    <color name="percent_green">@color/green.2EBD85</color>
+    <color name="percent_red">@color/red.F5465D</color>
+    <color name="percent_gray">@color/gray.848E9C</color>
 
-    <color name="black">#000000</color>
-    <color name="black_3">#08000000</color>
-    <color name="black_10">#19000000</color>
-    <color name="black_40">#67000000</color>
-    <color name="black_70">#B3000000</color>
+    <color name="bg_secondary">@color/white.F3F3F5</color>
 
-    <color name="bg_secondary">#F3F3F5</color>
-
-    <color name="colorAccent">#03DAC5</color>
-    <color name="blueRibbon800">#016FE8</color>
-
-    <!--  Yellow shades  -->
-    <color name="yellow.FFD93A">#FFD93A</color>
-
-    <!--  Red shades  -->
-    <color name="red.ED6D7E">#ED6D7E</color>
-
-    <!-- RIPPLE -->
-    <eat-comment />
-    <color name="ripple_color">@color/black_10</color>
-    <color name="ripple_mask">#62ffffff</color>
-    <color name="shimmer">#C2C2C2</color>
-
-    <!-- Border -->
-    <color name="border_enabled">#e1e2e9</color>
-    <color name="border_disabled">#dae1e8</color>
-    <color name="border_focused">#666</color>
-    <color name="border_error">#e76a70</color>
-
-    <!-- Box Background -->
-    <color name="box_bg_enabled">#fff</color>
-    <color name="box_bg_disabled">#ebeff5</color>
-    <color name="box_bg_focused">#fff</color>
-    <color name="box_bg_error">#fdf0f2</color>
-
-    <!-- Text -->
-    <color name="text_primary">#333333</color>
-    <color name="text_secondary">#9496AC</color>
-    <color name="text_faded">#747474</color>
-    <color name="text_hint">#808080</color>
-    <color name="text_error">#d76f78</color>
-
-    <!-- Icon -->
-    <color name="icon_error">#e2515b</color>
-    <color name="icon_color">@color/colorPrimaryDark</color>
-
-    <!-- Dialogs -->
-    <color name="mirage200">#A2A5A7</color>
-    <color name="mirage400">#5D6166</color>
-    <color name="mirage500">#454A50</color>
-    <color name="mirage700">#171D24</color>
+    <color name="colorAccent">@color/green.03DAC5</color>
 
 </resources>

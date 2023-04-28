@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.asiman.cryptotracker.R
 import com.asiman.cryptotracker.support.tools.NavigationCommand
-import com.asiman.cryptotracker.uikit.dialog.LoadingDialog
-import com.asiman.cryptotracker.uikit.view.showSnackbar
+import com.example.module_ui_kit.dialog.LoadingDialog
+import com.example.module_ui_kit.view.showSnackbar
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
     private val vb: Inflate<VB>,
@@ -23,7 +23,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
     val binding get() = _binding!!
     protected lateinit var viewModel: VM
 
-    protected open val loadingDialog: DialogFragment? by lazy { LoadingDialog.build() }
+    protected open val loadingDialog: DialogFragment? by lazy { com.example.module_ui_kit.dialog.LoadingDialog.build() }
 
     private var isObserving = false
 
