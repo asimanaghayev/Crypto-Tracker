@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.viewModelScope
 import com.asiman.cryptotracker.base.Constants.LIVE_REFRESH_TIME
 import com.asiman.cryptotracker.ui.base.BaseViewModel
-import com.asiman.module_network.repository.CoinsRepository
-import com.asiman.module_network.repository.SimpleRepository
+import com.asiman.module_network.repo.coins.CoinsRepository
+import com.asiman.module_network.repo.simple.SimpleRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

@@ -1,4 +1,4 @@
-package com.asiman.module_network.repository
+package com.asiman.module_network.repo.base
 
 import androidx.lifecycle.MutableLiveData
 import com.asiman.module_network.model.BaseResponse

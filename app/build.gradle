@@ -122,6 +122,8 @@ dependencies {
 
     implementation di.android
     kapt di.daggerCompiler
+    implementation 'androidx.hilt:hilt-work:1.0.0'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
 
     implementation navigation.ui
     implementation navigation.fragment

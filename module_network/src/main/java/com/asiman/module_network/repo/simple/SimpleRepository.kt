@@ -1,8 +1,8 @@
-package com.asiman.module_network.repository
+package com.asiman.module_network.repo.simple
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.asiman.module_network.base.ApiInitHelper
+import com.asiman.module_network.repo.base.BaseRepository
 import com.asiman.module_storage.dao.PriceDao
 import com.asiman.module_storage.entity.Coin
 import com.asiman.module_storage.entity.Price
@@ -14,12 +14,11 @@ import javax.inject.Inject
 
 class SimpleRepository @Inject constructor(
     private val pricesDao: PriceDao,
+    private val service: SimpleService,
 ) : BaseRepository() {
-    private val service = ApiInitHelper.simpleService
 
     private val _remoteCoinsPrice = MutableLiveData<List<CoinWithPrice>>()
     val remoteCoinsPrice: LiveData<List<CoinWithPrice>> = _remoteCoinsPrice
-
 
     suspend fun fetchPrices(coins: List<Coin>) {
         val response = handleRequest { service.getPrice(ids = coins.toIdQueryString()) }
