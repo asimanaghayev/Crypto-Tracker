@@ -1,0 +1,18 @@
+digraph {
+  graph [label="Crypto Tracker\n ",labelloc=t,fontsize=30,ranksep=1.4];
+  node [style=filled, fillcolor="#bbbbbb"];
+  rankdir=TB;
+
+  # Projects
+
+  ":app" [fillcolor="#baffc9"];
+  ":module_network" [fillcolor="#baffc9"];
+  ":module_storage" [fillcolor="#baffc9"];
+
+  {rank = same;}
+
+  # Dependencies
+
+  ":app" -> ":module_network"
+  ":module_network" -> ":module_storage"
+}
