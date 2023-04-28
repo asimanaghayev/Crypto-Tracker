@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_title" />
 
-        <com.asiman.cryptotracker.uikit.view.CustomRecyclerView
+        <com.example.module_ui_kit.view.recyclerview.CustomRecyclerView
             android:id="@+id/rv_coins"
             android:layout_width="match_parent"
             android:layout_height="0dp"

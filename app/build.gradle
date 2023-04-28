@@ -99,6 +99,7 @@ android {
 
 dependencies {
     api project(":module_network")
+    api project(":module_ui_kit")
 
     implementation core.core
     implementation core.appCompat
@@ -136,8 +137,5 @@ dependencies {
     implementation glide.core
     implementation glide.okhttp3
     kapt glide.compiler
-
-    // shimmer loading
-    implementation "com.facebook.shimmer:shimmer:$version_shimmer"
 
 }

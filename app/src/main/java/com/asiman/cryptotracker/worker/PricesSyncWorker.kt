@@ -6,9 +6,9 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.asiman.cryptotracker.R
 import com.asiman.cryptotracker.support.extensions.sendNotification
-import com.asiman.cryptotracker.support.util.toAmountText
 import com.asiman.module_network.repo.coins.CoinsRepository
 import com.asiman.module_network.repo.simple.SimpleRepository
+import com.example.module_ui_kit.support.extensions.toAmountText
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.math.BigDecimal

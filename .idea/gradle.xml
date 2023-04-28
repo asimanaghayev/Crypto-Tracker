@@ -14,6 +14,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/module_network" />
             <option value="$PROJECT_DIR$/module_storage" />
+            <option value="$PROJECT_DIR$/module_ui_kit" />
+            <option value="$PROJECT_DIR$/module_utility" />
           </set>
         </option>
       </GradleProjectSettings>

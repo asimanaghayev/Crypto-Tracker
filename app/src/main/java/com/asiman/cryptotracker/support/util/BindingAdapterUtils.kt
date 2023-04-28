@@ -7,6 +7,8 @@ import androidx.databinding.BindingAdapter
 import com.asiman.cryptotracker.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.module_ui_kit.support.extensions.toAmountText
+import com.example.module_utility.round
 import java.math.BigDecimal
 import java.sql.Date
 import java.text.SimpleDateFormat
@@ -88,8 +90,10 @@ object BindingAdapterUtils {
         imageUrl?.let {
             Glide.with(this)
                 .load(imageUrl)
-                .apply(RequestOptions()
-                    .fitCenter())
+                .apply(
+                    RequestOptions()
+                        .fitCenter()
+                )
                 .into(this)
         }
     }

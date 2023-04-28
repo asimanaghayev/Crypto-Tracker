@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  White shades  -->
+    <color name="white">#FFFFFF</color>
+    <color name="white.FFFFFF.62">#62FFFFFF</color>
+    <color name="white.F3F3F5">#F3F3F5</color>
+    <color name="white.EBEFF5">#EBEFF5</color>
+    <color name="white.FDF0F2">#FDF0F2</color>
+    <color name="white.E1E2E9">#E1E2E9</color>
+    <color name="white.DAE1E8">#DAE1E8</color>
+    <color name="white.C2C2C2">#C2C2C2</color>
+
+    <!--  Black shades  -->
+    <color name="black">#000000</color>
+    <color name="black.3">#08000000</color>
+    <color name="black.10">#19000000</color>
+    <color name="black.40">#67000000</color>
+    <color name="black.70">#B3000000</color>
+    <color name="black.171D24">#171D24</color>
+
+    <!--  Gray shades  -->
+    <color name="gray.A2A5A7">#A2A5A7</color>
+    <color name="gray.9496AC">#9496AC</color>
+    <color name="gray.848E9C">#848E9C</color>
+    <color name="gray.808080">#808080</color>
+    <color name="gray.747474">#747474</color>
+    <color name="gray.666666">#666666</color>
+    <color name="gray.333333">#333333</color>
+    <color name="gray.5D6166">#5D6166</color>
+    <color name="gray.454A50">#454A50</color>
+
+    <!--  Blue shades  -->
+    <color name="blue.517fA4">#517fA4</color>
+    <color name="blue.353B48">#353B48</color>
+    <color name="blue.046EDB.20">#33046EDB</color>
+
+    <!--  Green shades  -->
+    <color name="green.03DAC5">#03DAC5</color>
+    <color name="green.018786">#018786</color>
+    <color name="green.2EBD85">#2EBD85</color>
+
+    <!--  Red shades  -->
+    <color name="red.ED6D7E">#ED6D7E</color>
+    <color name="red.F5465D">#F5465D</color>
+    <color name="red.E2515B">#E2515B</color>
+    <color name="red.E76A70">#E76A70</color>
+    <color name="red.D76F78">#D76F78</color>
+
+    <!--  Yellow shades  -->
+    <color name="yellow.FFD93A">#FFD93A</color>
+
+</resources>
