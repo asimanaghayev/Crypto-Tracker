@@ -2,10 +2,10 @@ package com.asiman.cryptotracker.ui.coin
 
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.asiman.cryptotracker.data.annotations.CoinType
-import com.asiman.cryptotracker.data.db.entity.Coin
-import com.asiman.cryptotracker.data.repository.CoinsRepository
-import com.asiman.cryptotracker.data.repository.SimpleRepository
+import com.asiman.module_storage.annotations.CoinType
+import com.asiman.module_storage.entity.Coin
+import com.asiman.module_network.repository.CoinsRepository
+import com.asiman.module_network.repository.SimpleRepository
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

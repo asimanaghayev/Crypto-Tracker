@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+}
+
+def properties = new Properties()
+file("../build.properties").withInputStream {
+    stream -> properties.load(stream)
+}
+
+android {
+    namespace 'com.asiman.module_storage'
+
+    defaultConfig {
+        compileSdkVersion buildVersions.compileSdkVersion
+        buildToolsVersion buildVersions.buildToolsVersion
+        minSdkVersion buildVersions.minSdkVersion
+        targetSdkVersion buildVersions.targetSdkVersion
+
+        buildConfigField(strings.STRING, strings.DATABASE_NAME, properties.getProperty(strings.DATABASE_NAME))
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation core.core
+    implementation core.appCompat
+    implementation core.material
+    testImplementation test.junit
+    androidTestImplementation test.androidxJunit
+    androidTestImplementation test.espressoCore
+
+    implementation room.runtime
+    kapt room.compiler
+    implementation room.ktx
+
+    implementation di.android
+    kapt di.daggerCompiler
+}

@@ -1,10 +1,10 @@
 package com.asiman.cryptotracker.ui.coin
 
 import androidx.navigation.fragment.navArgs
-import com.asiman.cryptotracker.data.db.model.CoinPrice
 import com.asiman.cryptotracker.databinding.FragmentCoinBinding
 import com.asiman.cryptotracker.ui.base.BaseFragment
 import com.asiman.cryptotracker.ui.base.adapter.ItemClickListener
+import com.asiman.module_storage.relation.CoinWithPrice
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,8 +14,8 @@ class CoinFragment : BaseFragment<FragmentCoinBinding, CoinViewModel>(
 ) {
     private val args: CoinFragmentArgs by navArgs()
 
-    private val adapter: HistoryAdapter = HistoryAdapter(object : ItemClickListener<CoinPrice> {
-        override fun onItemClick(item: CoinPrice) {
+    private val adapter: HistoryAdapter = HistoryAdapter(object : ItemClickListener<CoinWithPrice> {
+        override fun onItemClick(item: CoinWithPrice) {
             // No click is needed for now
         }
     })

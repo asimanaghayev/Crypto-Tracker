@@ -2,14 +2,13 @@ package com.asiman.cryptotracker.ui.home
 
 import android.app.Application
 import androidx.lifecycle.viewModelScope
-import com.asiman.cryptotracker.base.Constants.Companion.LIVE_REFRESH_TIME
-import com.asiman.cryptotracker.data.repository.CoinsRepository
-import com.asiman.cryptotracker.data.repository.SimpleRepository
+import com.asiman.cryptotracker.base.Constants.LIVE_REFRESH_TIME
 import com.asiman.cryptotracker.ui.base.BaseViewModel
+import com.asiman.module_network.repository.CoinsRepository
+import com.asiman.module_network.repository.SimpleRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -5,18 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.work.*
-import com.asiman.cryptotracker.base.Constants.Companion.LIVE_REFRESH_TIME
-import com.asiman.cryptotracker.data.db.entity.Coin
-import com.asiman.cryptotracker.data.db.model.CoinPrice
-import com.asiman.cryptotracker.data.repository.CoinsRepository
-import com.asiman.cryptotracker.data.repository.SimpleRepository
+import com.asiman.cryptotracker.base.Constants.LIVE_REFRESH_TIME
+import com.asiman.module_network.repository.CoinsRepository
+import com.asiman.module_network.repository.SimpleRepository
 import com.asiman.cryptotracker.support.tools.NavigationCommand
 import com.asiman.cryptotracker.ui.base.BaseViewModel
 import com.asiman.cryptotracker.worker.PricesSyncWorker
+import com.asiman.module_storage.entity.Coin
+import com.asiman.module_storage.relation.CoinWithPrice
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.util.concurrent.TimeUnit
@@ -32,11 +31,12 @@ class CoinViewModel @Inject constructor(
         const val WORK_NAME = "PRICES_SYNC_WORK"
     }
 
-    private val _coinsHistory: MutableLiveData<List<CoinPrice>> = MutableLiveData<List<CoinPrice>>()
-    val coinsHistory: LiveData<List<CoinPrice>> = _coinsHistory
+    private val _coinsHistory: MutableLiveData<List<CoinWithPrice>> =
+        MutableLiveData<List<CoinWithPrice>>()
+    val coinsHistory: LiveData<List<CoinWithPrice>> = _coinsHistory
 
     var coin: MutableLiveData<Coin> = MutableLiveData()
-    var coinPrice = MutableLiveData<CoinPrice>()
+    var coinPrice = MutableLiveData<CoinWithPrice>()
 
     var minLimit: MutableLiveData<BigDecimal> = MutableLiveData<BigDecimal>()
     var maxLimit: MutableLiveData<BigDecimal> = MutableLiveData<BigDecimal>()
@@ -45,7 +45,7 @@ class CoinViewModel @Inject constructor(
         coin.observeForever { coin ->
             viewModelScope.launch(Dispatchers.IO) {
                 repository.getPriceHistory(coin).collect { prices ->
-                    _coinsHistory.postValue(prices.map { CoinPrice(coin, it) })
+                    _coinsHistory.postValue(prices.map { CoinWithPrice(coin, it) })
                 }
             }
 

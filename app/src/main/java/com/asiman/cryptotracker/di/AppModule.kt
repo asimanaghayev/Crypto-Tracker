@@ -1,7 +1,7 @@
 package com.asiman.cryptotracker.di
 
 import android.content.Context
-import com.asiman.cryptotracker.data.db.AppDatabase
+import com.asiman.module_storage.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,9 +13,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
-    @Singleton
-    @Provides
-    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
-        return AppDatabase.getDatabase(context)
-    }
+//    @Singleton
+//    @Provides
+//    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
+//        return AppDatabase.getDatabase(context)
+//    }
 }

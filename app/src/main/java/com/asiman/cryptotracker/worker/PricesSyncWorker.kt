@@ -4,12 +4,11 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.asiman.cryptotracker.R
-import com.asiman.cryptotracker.data.db.AppDatabase
-import com.asiman.cryptotracker.data.repository.CoinsRepository
-import com.asiman.cryptotracker.data.repository.SimpleRepository
+import com.asiman.module_storage.AppDatabase
+import com.asiman.module_network.repository.CoinsRepository
+import com.asiman.module_network.repository.SimpleRepository
 import com.asiman.cryptotracker.support.extensions.sendNotification
 import com.asiman.cryptotracker.support.util.toAmountText
-import kotlinx.coroutines.flow.collect
 import java.math.BigDecimal
 
 class PricesSyncWorker(
@@ -18,8 +17,8 @@ class PricesSyncWorker(
 ) : CoroutineWorker(context, params) {
 
     override suspend fun doWork(): Result {
-        val coinsRepository = CoinsRepository(AppDatabase.getDatabase(context))
-        val repository = SimpleRepository(AppDatabase.getDatabase(context))
+        val coinsRepository = CoinsRepository(AppDatabase.getCoinDao(context))
+        val repository = SimpleRepository(AppDatabase.getPriceDao(context))
 
         coinsRepository.getCoinsForAlert().collect {
             val coinPrices = repository.getPrices(it)

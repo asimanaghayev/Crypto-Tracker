@@ -12,18 +12,6 @@ fun Context.toast(message: String, length: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, length).show()
 }
 
-fun List<String>.toQueryString(): String {
-    var result = "";
-    for (value in this) {
-        result = if (result.isEmpty()) {
-            result.plus(value)
-        } else {
-            result.plus(",$value")
-        }
-    }
-    return result
-}
-
 fun Float.round(place: Int = 2): Float {
     return this.toBigDecimal().round(place).toFloat()
 }

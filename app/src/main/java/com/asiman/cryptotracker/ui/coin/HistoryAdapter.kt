@@ -2,15 +2,18 @@ package com.asiman.cryptotracker.ui.coin
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.asiman.cryptotracker.data.db.model.CoinPrice
 import com.asiman.cryptotracker.databinding.ItemHistoryBinding
 import com.asiman.cryptotracker.ui.base.adapter.BaseAdapter
 import com.asiman.cryptotracker.ui.base.adapter.ItemClickListener
+import com.asiman.module_storage.relation.CoinWithPrice
 
-class HistoryAdapter(itemClickListener: ItemClickListener<CoinPrice>) :
-    BaseAdapter<CoinPrice, BaseAdapter.BaseViewHolder<CoinPrice>>(itemClickListener) {
+class HistoryAdapter(itemClickListener: ItemClickListener<CoinWithPrice>) :
+    BaseAdapter<CoinWithPrice, BaseAdapter.BaseViewHolder<CoinWithPrice>>(itemClickListener) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<CoinPrice> {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): BaseViewHolder<CoinWithPrice> {
         return HistoryViewHolder(
             ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false),
             itemClickListener

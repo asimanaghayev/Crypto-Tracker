@@ -4,14 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.asiman.cryptotracker.base.Constants.Companion.LIVE_REFRESH_TIME
-import com.asiman.cryptotracker.data.db.model.CoinPrice
-import com.asiman.cryptotracker.data.repository.CoinsRepository
-import com.asiman.cryptotracker.data.repository.SimpleRepository
+import com.asiman.cryptotracker.base.Constants.LIVE_REFRESH_TIME
+import com.asiman.module_network.repository.CoinsRepository
+import com.asiman.module_network.repository.SimpleRepository
+import com.asiman.module_storage.relation.CoinWithPrice
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +21,7 @@ class HistoryViewModel @Inject constructor(
     private val coinsRepository: CoinsRepository,
 ) : AndroidViewModel(application) {
 
-    val prices: LiveData<List<CoinPrice>> = repository.remoteCoinsPrice
+    val prices: LiveData<List<CoinWithPrice>> = repository.remoteCoinsPrice
 
     init {
         viewModelScope.launch(Dispatchers.IO) {

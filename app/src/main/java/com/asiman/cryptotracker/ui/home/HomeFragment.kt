@@ -1,10 +1,10 @@
 package com.asiman.cryptotracker.ui.home
 
 import androidx.navigation.fragment.findNavController
-import com.asiman.cryptotracker.data.db.model.CoinPrice
 import com.asiman.cryptotracker.databinding.FragmentHomeBinding
 import com.asiman.cryptotracker.ui.base.BaseFragment
 import com.asiman.cryptotracker.ui.base.adapter.ItemClickListener
+import com.asiman.module_storage.relation.CoinWithPrice
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -13,8 +13,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     HomeViewModel::class.java
 ) {
 
-    private val adapter: CoinsAdapter = CoinsAdapter(object : ItemClickListener<CoinPrice> {
-        override fun onItemClick(item: CoinPrice) {
+    private val adapter: CoinsAdapter = CoinsAdapter(object : ItemClickListener<CoinWithPrice> {
+        override fun onItemClick(item: CoinWithPrice) {
             findNavController().navigate(HomeFragmentDirections.toCoin(item.coin))
         }
     })
