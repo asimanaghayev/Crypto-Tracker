@@ -18,6 +18,8 @@
     <color name="black.40">#67000000</color>
     <color name="black.70">#B3000000</color>
     <color name="black.171D24">#171D24</color>
+    <color name="black.121212">#121212</color>
+    <color name="black.121212.40">#66121212</color>
 
     <!--  Gray shades  -->
     <color name="gray.A2A5A7">#A2A5A7</color>

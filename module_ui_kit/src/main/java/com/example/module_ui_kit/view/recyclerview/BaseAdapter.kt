@@ -55,7 +55,9 @@ abstract class BaseAdapter<Entity, H : BaseAdapter.BaseViewHolder<Entity>> :
     }
 
     override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
-        adapterDataObserver?.let { unregisterAdapterDataObserver(it) }
+        if (hasObservers()) {
+            adapterDataObserver?.let { unregisterAdapterDataObserver(it) }
+        }
     }
 
     /**

@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.asiman.cryptotracker.R
 import com.asiman.cryptotracker.support.tools.NavigationCommand
-import com.example.module_ui_kit.dialog.LoadingDialog
 import com.example.module_ui_kit.view.showSnackbar
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
@@ -19,11 +18,12 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
     private val vm: Class<VM>,
 ) : Fragment() {
 
-    protected var _binding: VB? = null
+    private var _binding: VB? = null
     val binding get() = _binding!!
+
     protected lateinit var viewModel: VM
 
-    protected open val loadingDialog: DialogFragment? by lazy { com.example.module_ui_kit.dialog.LoadingDialog.build() }
+    val baseActivity by lazy { requireActivity() as BaseActivity }
 
     private var isObserving = false
 
@@ -120,11 +120,11 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
     }
 
     protected open fun showLoading() {
-        if (loadingDialog?.isAdded == false) loadingDialog?.show("dialog")
+        baseActivity.showLoading()
     }
 
     protected open fun hideLoading() {
-        if (loadingDialog?.isAdded == true) loadingDialog?.dismiss()
+        baseActivity.hideLoading()
     }
 
     protected fun <T : DialogFragment> T.show(tag: String? = null): T {
