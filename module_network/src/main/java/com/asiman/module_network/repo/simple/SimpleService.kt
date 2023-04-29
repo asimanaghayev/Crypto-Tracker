@@ -21,7 +21,7 @@ interface SimpleService {
     @GET(PATH_PRICE)
     suspend fun getPrice(
         @Query(encoded = true, value = QUERY_IDS)
-        ids: String = listOf(CoinType.BITCOIN, CoinType.ETHEREUM, CoinType.RIPPLE).toQueryString(),
+        ids: String = CoinType.ALL.toQueryString(),
         @Query(encoded = true, value = QUERY_CURRENCIES)
         currencies: String = listOf(Currency.USD, Currency.EUR).toQueryString(),
         @Query(encoded = true, value = QUERY_INCLUDE_24H_CHANGE)

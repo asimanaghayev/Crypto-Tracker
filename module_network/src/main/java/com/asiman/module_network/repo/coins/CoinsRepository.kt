@@ -6,7 +6,7 @@ import com.asiman.module_network.repo.base.BaseRepository
 import com.asiman.module_storage.annotations.CoinType
 import com.asiman.module_storage.dao.CoinDao
 import com.asiman.module_storage.entity.Coin
-import com.asiman.module_storage.toCoin
+import com.asiman.module_network.extensions.toCoin
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

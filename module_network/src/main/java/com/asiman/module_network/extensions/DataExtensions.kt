@@ -1,11 +1,11 @@
-package com.asiman.module_storage
+package com.asiman.module_network.extensions
 
-import com.asiman.module_storage.annotations.CoinType
-import com.asiman.module_storage.annotations.Currency
 import com.asiman.module_network.model.CoinResponse
 import com.asiman.module_network.model.CurrencyPOJO
 import com.asiman.module_network.model.PriceResponse
-import com.asiman.module_storage.entity.Amount
+import com.asiman.module_storage.annotations.CoinType
+import com.asiman.module_storage.annotations.Currency
+import com.asiman.module_storage.entity.model.Amount
 import com.asiman.module_storage.entity.Coin
 import com.asiman.module_storage.entity.Price
 import com.asiman.module_storage.relation.CoinWithPrice

@@ -8,12 +8,15 @@ import androidx.room.TypeConverters
 import com.asiman.module_storage.converters.Converters
 import com.asiman.module_storage.dao.CoinDao
 import com.asiman.module_storage.dao.PriceDao
-import com.asiman.module_storage.entity.Amount
 import com.asiman.module_storage.entity.Coin
 import com.asiman.module_storage.entity.Price
 
 
-@Database(version = 1, entities = [Coin::class, Amount::class, Price::class])
+@Database(
+    version = 1,
+    entities = [Coin::class, Price::class],
+    exportSchema = true
+)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -21,6 +24,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract val coinDao: CoinDao
 
     companion object {
+//        enable if migrations added
 //        val ALL_MIGRATIONS = arrayOf()
 
         @Volatile

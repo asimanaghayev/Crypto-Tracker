@@ -55,10 +55,16 @@ dependencies {
     androidTestImplementation test.androidxJunit
     androidTestImplementation test.espressoCore
 
+    implementation di.android
+    kapt di.daggerCompiler
+
     implementation room.runtime
     kapt room.compiler
     implementation room.ktx
 
-    implementation di.android
-    kapt di.daggerCompiler
+    implementation moshi.core
+    implementation moshi.kotlinVersion
+    kapt moshi.kotlin
+
+    implementation google.gson
 }
