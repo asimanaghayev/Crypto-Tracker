@@ -34,4 +34,9 @@
     <!-- Icon -->
     <color name="icon">@color/blue.353B48</color>
     <color name="icon.error">@color/red.E2515B</color>
+
+    <!--  Loading  -->
+    <color name="loading.bg">@color/black.121212.40</color>
+    <color name="loading.tint">@color/black.121212</color>
+
 </resources>

@@ -76,7 +76,7 @@
     <dimen name="border_size_medium">4dp</dimen>
 
     <!-- Loading Dialog -->
-    <dimen name="dialog_loading_width">280dp</dimen>
+    <dimen name="loading.size">30dp</dimen>
 
     <!-- Shimmmer -->
     <dimen name="shimmer_text_height_normal">11dp</dimen>
