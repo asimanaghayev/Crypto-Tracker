@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "244ad77b31fbbd53956edb62f1c40107",
+    "identityHash": "20d1a931436f6a5c52b2fb72737a05e4",
     "entities": [
       {
         "tableName": "Coin",
@@ -55,46 +55,8 @@
         "foreignKeys": []
       },
       {
-        "tableName": "Amount",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `currency` TEXT NOT NULL, `value` INTEGER NOT NULL, `dailyChange` REAL NOT NULL)",
-        "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "currency",
-            "columnName": "currency",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "value",
-            "columnName": "value",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "dailyChange",
-            "columnName": "dailyChange",
-            "affinity": "REAL",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
         "tableName": "Price",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `coinId` TEXT NOT NULL, `date` INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP, `usdid` INTEGER NOT NULL, `usdcurrency` TEXT NOT NULL, `usdvalue` INTEGER NOT NULL, `usddailyChange` REAL NOT NULL, `eurid` INTEGER NOT NULL, `eurcurrency` TEXT NOT NULL, `eurvalue` INTEGER NOT NULL, `eurdailyChange` REAL NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `coinId` TEXT NOT NULL, `usd` TEXT NOT NULL, `eur` TEXT NOT NULL, `date` INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP)",
         "fields": [
           {
             "fieldPath": "id",
@@ -109,59 +71,23 @@
             "notNull": true
           },
           {
+            "fieldPath": "usd",
+            "columnName": "usd",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eur",
+            "columnName": "eur",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "date",
             "columnName": "date",
             "affinity": "INTEGER",
             "notNull": true,
             "defaultValue": "CURRENT_TIMESTAMP"
-          },
-          {
-            "fieldPath": "usd.id",
-            "columnName": "usdid",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "usd.currency",
-            "columnName": "usdcurrency",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "usd.value",
-            "columnName": "usdvalue",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "usd.dailyChange",
-            "columnName": "usddailyChange",
-            "affinity": "REAL",
-            "notNull": true
-          },
-          {
-            "fieldPath": "eur.id",
-            "columnName": "eurid",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "eur.currency",
-            "columnName": "eurcurrency",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "eur.value",
-            "columnName": "eurvalue",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "eur.dailyChange",
-            "columnName": "eurdailyChange",
-            "affinity": "REAL",
-            "notNull": true
           }
         ],
         "primaryKey": {
@@ -177,7 +103,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '244ad77b31fbbd53956edb62f1c40107')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '20d1a931436f6a5c52b2fb72737a05e4')"
     ]
   }
 }

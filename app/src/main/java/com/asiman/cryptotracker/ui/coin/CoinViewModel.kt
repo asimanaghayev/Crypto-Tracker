@@ -6,11 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.work.*
 import com.asiman.cryptotracker.base.Constants.LIVE_REFRESH_TIME
-import com.asiman.module_network.repo.coins.CoinsRepository
-import com.asiman.module_network.repo.simple.SimpleRepository
 import com.asiman.cryptotracker.support.tools.NavigationCommand
 import com.asiman.cryptotracker.ui.base.BaseViewModel
 import com.asiman.cryptotracker.worker.PricesSyncWorker
+import com.asiman.module_network.repo.coins.CoinsRepository
+import com.asiman.module_network.repo.simple.SimpleRepository
 import com.asiman.module_storage.entity.Coin
 import com.asiman.module_storage.relation.CoinWithPrice
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -50,11 +50,9 @@ class CoinViewModel @Inject constructor(
             }
 
             viewModelScope.launch(Dispatchers.IO) {
-                handleLoading(true)
                 while (true) {
                     delay(LIVE_REFRESH_TIME)
                     coinPrice.postValue(repository.getPrice(coin))
-                    handleLoading(false)
                 }
             }
 
