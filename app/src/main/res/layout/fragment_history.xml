@@ -24,7 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_coin" />
+            tools:listitem="@layout/item_history" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

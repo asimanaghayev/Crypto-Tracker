@@ -2,11 +2,14 @@ package com.asiman.module_network.repo.coins
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.asiman.module_network.model.pojo.OhlcPOJO
 import com.asiman.module_network.repo.base.BaseRepository
+import com.asiman.module_network.support.extensions.asOhlcList
+import com.asiman.module_network.support.extensions.toCoin
+import com.asiman.module_storage.annotations.ChartRange
 import com.asiman.module_storage.annotations.CoinType
 import com.asiman.module_storage.dao.CoinDao
 import com.asiman.module_storage.entity.Coin
-import com.asiman.module_network.extensions.toCoin
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -27,6 +30,10 @@ class CoinsRepository @Inject constructor(
         return coinDao.getCoinsForAlert()
     }
 
+    fun update(coin: Coin) {
+        coinDao.update(coin)
+    }
+
     suspend fun syncCoins() {
         localCoins.collect {
             _allCoins.postValue(it as MutableList<Coin>?)
@@ -42,7 +49,7 @@ class CoinsRepository @Inject constructor(
         }
     }
 
-    fun update(coin: Coin) {
-        coinDao.update(coin)
+    suspend fun getCoinOhlc(coinId: String, @ChartRange type: String): List<OhlcPOJO> {
+        return service.getCoinOhlc(coinId, days = type).asOhlcList()
     }
 }

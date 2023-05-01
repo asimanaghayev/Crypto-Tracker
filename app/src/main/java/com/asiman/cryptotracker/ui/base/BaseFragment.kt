@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.asiman.cryptotracker.R
+import com.asiman.cryptotracker.base.Constants.ERROR_MESSAGE_TIME
 import com.asiman.cryptotracker.support.tools.NavigationCommand
 import com.example.module_ui_kit.view.showSnackbar
 
@@ -83,33 +84,26 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
 
     private fun bindInfo() {
         viewModel.info.observe(viewLifecycleOwner) {
-            binding.root.showSnackbar(it)
+            showInfo(it)
         }
+    }
+
+    protected open fun showInfo(message: String) {
+        binding.root.showSnackbar(message)
     }
 
     private fun bindError() {
+        viewModel.operationError.observe(this) {
+            hideLoading()
+            showError(it.errorMessage)
+        }
         viewModel.error.observe(viewLifecycleOwner) {
-            binding.root.showSnackbar(it, R.drawable.bg_error)
+            showError(it)
         }
     }
 
-    protected open fun showBackEndError() {
-        BaseBottomSheetDialog.build(action = {
-            it.dismiss()
-        }).show("general-error-dialog")
-    }
-
-    protected open fun showError(
-        message: Int,
-        title: Int? = R.string.error_unknown_title,
-        image: Int? = R.drawable.ic_error,
-    ) {
-        BaseBottomSheetDialog.build(text = message,
-            title = title ?: R.string.error_unknown_title,
-            image = image ?: R.drawable.ic_error,
-            action = {
-                it.dismiss()
-            }).show("show-error-dialog")
+    protected open fun showError(message: String) {
+        binding.root.showSnackbar(message, R.drawable.bg_error, duration = ERROR_MESSAGE_TIME)
     }
 
     private fun bindLoading() {

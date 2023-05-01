@@ -3,6 +3,7 @@ package com.asiman.module_network.interceptor
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import com.asiman.module_network.interceptor.exceptions.NoConnectivityException
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.Interceptor
 import okhttp3.Response

@@ -87,16 +87,45 @@
             app:layout_constraintTop_toBottomOf="@id/txt_percent" />
 
         <TextView
+            android:id="@+id/txt_chart_title"
+            style="@style/SecondaryTextStyle"
+            android:layout_marginHorizontal="@dimen/padding_large"
+            android:layout_marginVertical="@dimen/padding_huge"
+            android:text="@string/label_chart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/amount_max" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/chart_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/padding_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_chart_title"
+            app:tabTextAppearance="@style/TabTextAppearance"
+            app:tabTextColor="@color/text.primary" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_chart"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginHorizontal="@dimen/padding_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chart_tabs" />
+
+        <TextView
             android:id="@+id/txt_history_title"
             style="@style/SecondaryTextStyle"
             android:layout_marginHorizontal="@dimen/padding_large"
             android:layout_marginVertical="@dimen/padding_huge"
             android:text="@string/label_history"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/amount_max" />
+            app:layout_constraintTop_toBottomOf="@id/vp_chart" />
 
         <com.example.module_ui_kit.view.recyclerview.CustomRecyclerView
-            android:id="@+id/rv_coins"
+            android:id="@+id/rv_history"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/padding_large"

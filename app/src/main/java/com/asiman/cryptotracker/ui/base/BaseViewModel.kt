@@ -8,9 +8,9 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigator
-import com.asiman.module_network.model.ErrorStatus
-import com.asiman.module_network.repo.base.BaseRepository
 import com.asiman.cryptotracker.support.tools.NavigationCommand
+import com.asiman.module_network.model.response.ErrorResponse
+import com.asiman.module_network.repo.base.BaseRepository
 import com.asiman.module_network.support.SingleLiveEvent
 
 open class BaseViewModel constructor(
@@ -32,7 +32,7 @@ open class BaseViewModel constructor(
     val error: LiveData<String>
         get() = _error
 
-    val operationError: MediatorLiveData<SingleLiveEvent<ErrorStatus>> = MediatorLiveData()
+    val operationError: MediatorLiveData<ErrorResponse> = MediatorLiveData()
 
     init {
         bindRepoObserver()
@@ -42,8 +42,6 @@ open class BaseViewModel constructor(
         repositories.forEach { repo ->
             operationError.addSource(repo.operationError) { error ->
                 operationError.value = error
-                handleLoading(false)
-                error.value?.errorMessage?.let { handleError(it) }
             }
         }
     }

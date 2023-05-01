@@ -1,4 +1,4 @@
-package com.asiman.module_network.model
+package com.asiman.module_network.model.pojo
 
 import com.squareup.moshi.Json
 import java.math.BigDecimal

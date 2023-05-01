@@ -9,6 +9,7 @@ import com.asiman.cryptotracker.base.Constants.LIVE_REFRESH_TIME
 import com.asiman.cryptotracker.support.tools.NavigationCommand
 import com.asiman.cryptotracker.ui.base.BaseViewModel
 import com.asiman.cryptotracker.worker.PricesSyncWorker
+import com.asiman.module_network.model.pojo.OhlcPOJO
 import com.asiman.module_network.repo.coins.CoinsRepository
 import com.asiman.module_network.repo.simple.SimpleRepository
 import com.asiman.module_storage.entity.Coin
@@ -35,50 +36,57 @@ class CoinViewModel @Inject constructor(
         MutableLiveData<List<CoinWithPrice>>()
     val coinsHistory: LiveData<List<CoinWithPrice>> = _coinsHistory
 
-    var coin: MutableLiveData<Coin> = MutableLiveData()
+    private val _chart: MutableLiveData<List<OhlcPOJO>> = MutableLiveData<List<OhlcPOJO>>()
+    val chart: LiveData<List<OhlcPOJO>> = _chart
+
+    lateinit var coin: Coin
     var coinPrice = MutableLiveData<CoinWithPrice>()
 
     var minLimit: MutableLiveData<BigDecimal> = MutableLiveData<BigDecimal>()
     var maxLimit: MutableLiveData<BigDecimal> = MutableLiveData<BigDecimal>()
 
-    init {
-        coin.observeForever { coin ->
-            viewModelScope.launch(Dispatchers.IO) {
-                repository.getPriceHistory(coin).collect { prices ->
-                    _coinsHistory.postValue(prices.map { CoinWithPrice(coin, it) })
-                }
-            }
+    fun setupCoin(coin: Coin) {
+        this.coin = coin
+        minLimit.postValue(coin.minLimit)
+        maxLimit.postValue(coin.maxLimit)
 
-            viewModelScope.launch(Dispatchers.IO) {
-                while (true) {
-                    delay(LIVE_REFRESH_TIME)
-                    coinPrice.postValue(repository.getPrice(coin))
-                }
-            }
+        fetchCoinHistory()
+        syncCoinData()
+    }
 
-            minLimit.postValue(coin.minLimit)
-            maxLimit.postValue(coin.maxLimit)
+    private fun fetchCoinHistory() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getPriceHistory(coin).collect { prices ->
+                _coinsHistory.postValue(prices.map { CoinWithPrice(coin, it) })
+            }
+        }
+    }
+
+    private fun syncCoinData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            while (true) {
+                delay(LIVE_REFRESH_TIME)
+                coinPrice.postValue(repository.getPrice(coin))
+            }
         }
     }
 
     fun saveClick() {
-        coin.value?.let { coin ->
-            minLimit.value?.let {
-                coin.minLimit = it
-            }
+        minLimit.value?.let {
+            coin.minLimit = it
+        }
 
-            maxLimit.value?.let {
-                coin.maxLimit = it
-            }
+        maxLimit.value?.let {
+            coin.maxLimit = it
+        }
 
-            viewModelScope.launch(Dispatchers.IO) {
-                coinRepository.update(coin)
-            }
+        viewModelScope.launch(Dispatchers.IO) {
+            coinRepository.update(coin)
+        }
 
-            if (coin.minLimit > BigDecimal.ZERO || coin.maxLimit > BigDecimal.ZERO) {
-                initWorker()
-                handleInfo("You will be notified if price exceeds limits.")
-            }
+        if (coin.minLimit > BigDecimal.ZERO || coin.maxLimit > BigDecimal.ZERO) {
+            initWorker()
+            handleInfo("You will be notified if price exceeds limits.")
         }
         navigate(NavigationCommand.Back)
     }

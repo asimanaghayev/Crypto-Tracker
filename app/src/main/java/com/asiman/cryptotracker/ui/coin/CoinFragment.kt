@@ -3,14 +3,15 @@ package com.asiman.cryptotracker.ui.coin
 import androidx.navigation.fragment.navArgs
 import com.asiman.cryptotracker.databinding.FragmentCoinBinding
 import com.asiman.cryptotracker.ui.base.BaseFragment
-import com.example.module_ui_kit.view.recyclerview.ItemClickListener
 import com.asiman.module_storage.relation.CoinWithPrice
+import com.example.module_ui_kit.view.recyclerview.ItemClickListener
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class CoinFragment : BaseFragment<FragmentCoinBinding, CoinViewModel>(
-    FragmentCoinBinding::inflate,
-    CoinViewModel::class.java
+    FragmentCoinBinding::inflate, CoinViewModel::class.java
 ) {
     private val args: CoinFragmentArgs by navArgs()
 
@@ -19,17 +20,28 @@ class CoinFragment : BaseFragment<FragmentCoinBinding, CoinViewModel>(
             // No click is needed for now
         }
     })
+    private lateinit var pagerAdapter: ViewPagerAdapter
 
     override fun bindUi(): Unit = with(binding) {
-        lifecycleOwner = this@CoinFragment
+        lifecycleOwner = viewLifecycleOwner
         viewmodel = viewModel
 
         setupAdapter()
-        viewModel.coin.postValue(args.coin)
+        setupPager()
+        viewModel.setupCoin(args.coin)
+    }
+
+    private fun setupPager() {
+        pagerAdapter = ViewPagerAdapter(requireActivity(), args.coin)
+        binding.vpChart.adapter = pagerAdapter
+
+        TabLayoutMediator(binding.chartTabs, binding.vpChart) { tab, position ->
+            tab.text = pagerAdapter.getTabName(position)
+        }.attach()
     }
 
     private fun setupAdapter() {
-        binding.rvCoins.setAdapter(adapter)
+        binding.rvHistory.setAdapter(adapter)
     }
 
     override fun bindObservers() {

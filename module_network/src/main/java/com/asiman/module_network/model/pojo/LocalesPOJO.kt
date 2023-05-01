@@ -1,4 +1,4 @@
-package com.asiman.module_network.model
+package com.asiman.module_network.model.pojo
 
 data class LocalesPOJO(
     val en: String,

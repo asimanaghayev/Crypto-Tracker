@@ -1,4 +1,6 @@
-package com.asiman.module_network.model
+package com.asiman.module_network.model.response
+
+import com.asiman.module_network.model.pojo.CurrencyPOJO
 
 data class PriceResponse(
 //    val coins: Map<String, CurrencyPOJO>,
