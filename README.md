@@ -6,7 +6,7 @@ ranges like(24H, 7d, 14d, 30d, 90d, 180d, 1y, Max).
 
 ### Screenshots
 
-<img src="/screenshots/Record 1.jpg" width="107" height="168"> <br />
+<img src="/screenshots/Record 1.gif" width="107" height="168"> <br />
 <img src="/screenshots/Screenshot 1.jpg" width="107" height="168"> <img src="/screenshots/Screenshot 2.jpg" width="107" height="168"> <img src="/screenshots/Screenshot 3.jpg" width="107" height="168"> <img src="/screenshots/Screenshot 4.jpg" width="107" height="168"> <img src="/screenshots/Screenshot 5.jpg" width="107" height="168">
 
 ### Project Insights
