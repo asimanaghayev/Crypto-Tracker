@@ -24,7 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     override fun bindUi(): Unit = with(binding) {
-        lifecycleOwner = this@HomeFragment
+        lifecycleOwner = viewLifecycleOwner
         viewmodel = viewModel
 
         setupAdapter()

@@ -50,7 +50,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun bindUi(): Unit = with(binding) {
-        lifecycleOwner = this@HistoryFragment
+        lifecycleOwner = viewLifecycleOwner
         viewmodel = viewModel
     }
 }

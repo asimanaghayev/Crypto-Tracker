@@ -63,6 +63,8 @@ dependencies {
 
     implementation okHttp.logging
 
+    implementation google.gson
+
     implementation moshi.core
     implementation moshi.kotlinVersion
     kapt moshi.kotlin

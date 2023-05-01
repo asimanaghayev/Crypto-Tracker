@@ -37,6 +37,8 @@
     <dimen name="padding_enormous">32dp</dimen>
 
     <!--  Fonts  -->
+    <dimen name="font_micro">9sp</dimen>
+    <dimen name="font_small">12sp</dimen>
     <dimen name="font_normal">13sp</dimen>
     <dimen name="font_large">15sp</dimen>
 

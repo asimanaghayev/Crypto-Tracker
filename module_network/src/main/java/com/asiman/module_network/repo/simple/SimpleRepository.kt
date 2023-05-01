@@ -7,8 +7,8 @@ import com.asiman.module_storage.dao.PriceDao
 import com.asiman.module_storage.entity.Coin
 import com.asiman.module_storage.entity.Price
 import com.asiman.module_storage.relation.CoinWithPrice
-import com.asiman.module_network.extensions.toCoinPriceList
-import com.asiman.module_network.extensions.toIdQueryString
+import com.asiman.module_network.support.extensions.toCoinPriceList
+import com.asiman.module_network.support.extensions.toIdQueryString
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

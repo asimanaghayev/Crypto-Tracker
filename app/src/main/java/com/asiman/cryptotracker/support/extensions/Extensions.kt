@@ -2,8 +2,6 @@ package com.asiman.cryptotracker.support.extensions
 
 import android.content.Context
 import android.widget.Toast
-import java.math.BigDecimal
-import java.math.RoundingMode
 
 /**
  * Extension functions of the app.

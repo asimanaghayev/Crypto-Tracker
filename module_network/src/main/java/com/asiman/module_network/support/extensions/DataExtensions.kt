@@ -1,13 +1,14 @@
-package com.asiman.module_network.extensions
+package com.asiman.module_network.support.extensions
 
-import com.asiman.module_network.model.CoinResponse
-import com.asiman.module_network.model.CurrencyPOJO
-import com.asiman.module_network.model.PriceResponse
+import com.asiman.module_network.model.response.CoinResponse
+import com.asiman.module_network.model.pojo.CurrencyPOJO
+import com.asiman.module_network.model.pojo.OhlcPOJO
+import com.asiman.module_network.model.response.PriceResponse
 import com.asiman.module_storage.annotations.CoinType
 import com.asiman.module_storage.annotations.Currency
-import com.asiman.module_storage.entity.model.Amount
 import com.asiman.module_storage.entity.Coin
 import com.asiman.module_storage.entity.Price
+import com.asiman.module_storage.entity.model.Amount
 import com.asiman.module_storage.relation.CoinWithPrice
 
 /**
@@ -96,4 +97,10 @@ fun List<Coin>.toIdQueryString(): String {
         }
     }
     return result
+}
+
+fun List<List<Float>>.asOhlcList(): List<OhlcPOJO> {
+    return map {
+        OhlcPOJO(it[0], it[1], it[2], it[3], it[4])
+    }
 }

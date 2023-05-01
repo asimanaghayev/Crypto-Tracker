@@ -3,6 +3,8 @@ package com.asiman.cryptotracker.base
 import android.app.Application
 import android.widget.Toast
 import com.asiman.cryptotracker.R
+import com.asiman.module_network.interceptor.exceptions.ErrorResponseException
+import com.asiman.module_network.interceptor.exceptions.UnknownException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,6 +29,12 @@ class GlobalExceptionHandler @Inject constructor(
             is SocketTimeoutException -> {
                 showMessage(application.getString(R.string.network_error_poor_network))
             }
+
+            is UnknownException -> {
+                showMessage(application.getString(R.string.network_error_unknown))
+            }
+
+            is ErrorResponseException -> {}
         }
     }
 

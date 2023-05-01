@@ -138,4 +138,9 @@ dependencies {
     implementation glide.okhttp3
     kapt glide.compiler
 
+    // Chart Library
+    implementation 'com.github.PhilJay:MPAndroidChart-Realm:v3.0.3@aar'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-beta01'
 }

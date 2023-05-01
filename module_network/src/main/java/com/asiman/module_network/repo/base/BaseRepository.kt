@@ -1,22 +1,47 @@
 package com.asiman.module_network.repo.base
 
-import androidx.lifecycle.MutableLiveData
-import com.asiman.module_network.model.BaseResponse
-import com.asiman.module_network.model.ErrorStatus
+import com.asiman.module_network.interceptor.error.Errors.UnknownErrorResponse
+import com.asiman.module_network.interceptor.exceptions.ErrorResponseException
+import com.asiman.module_network.model.response.BaseResponse
+import com.asiman.module_network.model.response.ErrorResponse
 import com.asiman.module_network.support.SingleLiveEvent
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import okhttp3.ResponseBody
+import retrofit2.Response
 
+@Suppress("UNCHECKED_CAST")
 open class BaseRepository {
-    val operationError = MutableLiveData<SingleLiveEvent<ErrorStatus>>()
+    val operationError = SingleLiveEvent<ErrorResponse>()
 
-    inline fun <T : BaseResponse?> handleRequest(call: () -> T): T {
+    inline fun <T : BaseResponse?> handleRequest(call: () -> Response<T>): T {
         call().apply {
-            this?.status?.let {
-                val event = SingleLiveEvent<ErrorStatus>()
-                event.value = it
-                operationError.postValue(event)
+            if (this.isSuccessful) {
+                this.body()?.apply {
+                    this.status?.let {
+                        handleError(it)
+                    }
+                }
+                return this.body() as T
+            } else {
+                handleErrorResponse((this.errorBody() as ResponseBody).string())
+                throw ErrorResponseException()
             }
-
-            return this
         }
+    }
+
+    fun handleErrorResponse(error: String) {
+        try {
+            val gson = Gson()
+            val type = object : TypeToken<BaseResponse>() {}.type
+            val errorResponse: BaseResponse? = gson.fromJson(error, type)
+            errorResponse?.status?.let { handleError(it) }
+        } catch (e: Exception) {
+            handleError(UnknownErrorResponse)
+        }
+    }
+
+    fun handleError(error: ErrorResponse) {
+        operationError.postValue(error)
     }
 }

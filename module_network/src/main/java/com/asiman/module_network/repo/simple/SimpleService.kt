@@ -1,7 +1,7 @@
 package com.asiman.module_network.repo.simple
 
-import com.asiman.module_network.extensions.toQueryString
-import com.asiman.module_network.model.PriceResponse
+import com.asiman.module_network.support.extensions.toQueryString
+import com.asiman.module_network.model.response.PriceResponse
 import com.asiman.module_network.repo.simple.SimpleConstants.PATH_PRICE
 import com.asiman.module_network.repo.simple.SimpleConstants.PATH_SUPPORTED_CURRENCIES
 import com.asiman.module_network.repo.simple.SimpleConstants.QUERY_CURRENCIES
@@ -10,6 +10,7 @@ import com.asiman.module_network.repo.simple.SimpleConstants.QUERY_INCLUDE_24H_C
 import com.asiman.module_network.repo.simple.SimpleConstants.QUERY_INCLUDE_LAST_UPDATE
 import com.asiman.module_storage.annotations.CoinType
 import com.asiman.module_storage.annotations.Currency
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -28,6 +29,6 @@ interface SimpleService {
         includeDailyChange: Boolean = true,
         @Query(encoded = true, value = QUERY_INCLUDE_LAST_UPDATE)
         includeLastUpdateTime: Boolean = true,
-    ): PriceResponse
+    ): Response<PriceResponse>
 
 }

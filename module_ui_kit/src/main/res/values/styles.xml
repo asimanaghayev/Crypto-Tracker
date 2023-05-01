@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- TextView Styles-->
     <style name="DefaultTextStyle" parent="Widget.AppCompat.TextView">
@@ -99,4 +99,8 @@
         <item name="boxCornerRadiusBottomStart">@dimen/radius.huge</item>
     </style>
 
+    <!--  Tab Layout  -->
+    <style name="TabTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">@dimen/font_micro</item>
+    </style>
 </resources>
