@@ -70,5 +70,5 @@ dependencies {
     kapt moshi.kotlin
 
     implementation di.android
-    kapt di.daggerCompiler
+    kapt di.androidCompiler
 }
