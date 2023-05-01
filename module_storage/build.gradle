@@ -56,7 +56,7 @@ dependencies {
     androidTestImplementation test.espressoCore
 
     implementation di.android
-    kapt di.daggerCompiler
+    kapt di.androidCompiler
 
     implementation room.runtime
     kapt room.compiler

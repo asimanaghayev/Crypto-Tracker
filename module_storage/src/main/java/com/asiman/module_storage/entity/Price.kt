@@ -10,7 +10,9 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Entity
 data class Price(
-    @PrimaryKey val coinId: String,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+
+    val coinId: String,
 
     var usd: Amount,
 

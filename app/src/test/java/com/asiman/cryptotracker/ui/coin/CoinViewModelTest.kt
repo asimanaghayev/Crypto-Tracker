@@ -38,7 +38,7 @@ class CoinViewModelTest {
     fun setup() {
         viewmodel = CoinViewModel(Application(), simpleRepository, coinsRepository)
 
-        whenever(viewmodel.coin.value)
+        whenever(viewmodel.coin)
             .thenReturn(coin)
     }
 

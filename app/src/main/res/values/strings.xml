@@ -6,7 +6,7 @@
     <string name="btn_close">Close</string>
 
     <!-- Labels -->
-    <string name="label_history">History</string>
+    <string name="label_history">Notification History</string>
     <string name="label_chart">Chart</string>
     <string name="label_empty_history">No history data found. Set limits to record rate change of crypto currency.</string>
 

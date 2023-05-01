@@ -108,6 +108,8 @@ dependencies {
     implementation core.constraint
     implementation core.timber
     implementation core.multidex
+    implementation core.viewpager
+    kapt core.databinding
 
     // Test
     androidTestImplementation test.espressoCore
@@ -122,15 +124,12 @@ dependencies {
     implementation lifeCycle.livedata
 
     implementation di.android
-    kapt di.daggerCompiler
-    implementation 'androidx.hilt:hilt-work:1.0.0'
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+    kapt di.androidCompiler
+    implementation di.work
+    kapt di.compiler
 
     implementation navigation.ui
     implementation navigation.fragment
-
-    // DataBinding
-    kapt "com.android.databinding:compiler:$version_compiler"
 
     implementation work.workManager
 
@@ -141,6 +140,4 @@ dependencies {
     // Chart Library
     implementation 'com.github.PhilJay:MPAndroidChart-Realm:v3.0.3@aar'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
-
-    implementation 'androidx.viewpager2:viewpager2:1.1.0-beta01'
 }
