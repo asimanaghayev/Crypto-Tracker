@@ -4,6 +4,9 @@ This application is for tracking crypto currencies. User can set min/max limits 
 they reach to that limit. You can find crypto currencies change graph as Candle Stick chart in
 ranges like(24H, 7d, 14d, 30d, 90d, 180d, 1y, Max).
 
+You can download and try app by yourself
+from [here](https://drive.google.com/file/d/1E2Zfm7gL_FbmeZuF4ccIHRblWbpofqCg/view?usp=sharing).
+
 ### Screenshots
 
 <img src="/screenshots/Record 1.gif" width="140" height="294"> <br />
